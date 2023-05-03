@@ -1,4 +1,4 @@
-def média():
+def média(exp):
     import bonitesas as bn
     from time import sleep
     bn.titulo('média aritmetica')
@@ -13,37 +13,52 @@ def média():
             print(media)
     print(f'a lista com todos os numeros digitados ficou {media}')
     sleep(2)
-    print(f'a soma de todos os termos digitados é {sum(media)}, e vai ser dividido por {len(media)}')
     resulmedia = sum(media) / len(media)
-    sleep(2)
-    print(f'o resultado final ficou {resulmedia}')
-    sleep(3)
+    if exp:
+        print(f'a soma de todos os termos digitados é {sum(media)}, e vai ser dividido por {len(media)}')
+        sleep(2)
+        print(f'o resultado final ficou {resulmedia}')
+        sleep(3)
+    else:
+        print(f'média: {resulmedia}')
     media = sorted(media)
-    print('agora vamos ver qual a mediana desses numeros digitados')
-    sleep(1)
-    print(f'vamos colocar a lista em ordem crescente: {media}')
-    print('agora vamos analisar quantos valores tem a lista')
-    sleep(3)
+    if exp:
+        print('agora vamos ver qual a mediana desses numeros digitados')
+        sleep(1)
+        print(f'vamos colocar a lista em ordem crescente: {media}')
+        print('agora vamos analisar quantos valores tem a lista')
+        sleep(3)
+    else:
+        pass
     if len(media) % 2 == 0:
-        print(
-            f'a lista tem {len(media)} valores e é par, logo devemos tirar a media dos 2 termos centrais para ter a mediana')
+        if exp:
+            print(f'a lista tem {len(media)} valores e é par, logo devemos tirar a media dos 2 termos centrais para ter a mediana')
+        else:
+            pass
         comp1 = (len(media) / 2) - 1
         comp1 = int(comp1)
         comp2 = len(media) / 2
         comp2 = int(comp2)
-        print(
-            f'os 2 valores do meio da lista são {media[comp1]} e {media[comp2]} e a média delas fica {(media[comp1] + media[comp2]) / 2}')
         mediana = (media[comp1] + media[comp2]) / 2
+        if exp:
+            print(f'os 2 valores do meio da lista são {media[comp1]} e {media[comp2]} e a média delas fica {mediana}')
+        else:
+            print(f'mediana = {mediana}')
     else:
-        print(
-            f'a lista tem {len(media)} valores e é impar, logo podemos apenas pegar o valor do meio para definir a mediana')
+        if exp:
+            print(f'a lista tem {len(media)} valores e é impar, logo podemos apenas pegar o valor do meio para definir a mediana')
+        else:
+            pass
         comp = (len(media) / 2) - 0.5
         comp = int(comp)
         mediana = media[comp]
     sleep(1)
     print(f'no fim a mediana fica {mediana}')
     sleep(2)
-    print(f'agora vamos ver qual a moda da lista de numeros, que seria o numero que se repete mais')
+    if exp:
+        print(f'agora vamos ver qual a moda da lista de numeros, que seria o numero que se repete mais')
+    else:
+        pass
     repeticoes = {}
     cont = 1
     for c in range(len(media) - 1):
@@ -51,7 +66,10 @@ def média():
         if moda == media[c + 1]:
             cont += 1
         else:
-            print(f'o numero {moda} se repete {cont} vez(es)')
+            if exp:
+                print(f'o numero {moda} se repete {cont} vez(es)')
+            else:
+                pass
             repeticoes[f'{cont}'] = moda
             cont = 1
         sleep(1)
@@ -59,62 +77,96 @@ def média():
     print('no fim juntando todos os resultados temos: ')
     print(f'média: {resulmedia}, mediana: {mediana}, moda: {repeticoes[f"{moda}"]}')
 
-def operações():
+def operações(exp):
     n = input('qual operação voce deseja realizar?\n+ (soma)\n- (subtração)\nX (multiplicação)\n% (divisão)\n')
     if n == '+':
         n = float(input('digite o primeiro numero: '))
         n0 = float(input('digite o numero a ser somado: '))
         resultado = n + n0
+        if exp:
+            print(f'{n} + {n0} = {resultado}')
+        else:
+            pass
         print('resultado = {}'.format(resultado))
         while True:
             n1 = (input('digite o numero a ser somado ou sair: '))
             if n1 == 'sair':
+                if exp:
+                    print('até a próxima')
+                else:
+                    pass
                 break
             else:
                 n1 = float(n1)
+                if exp:
+                    print(f'{resultado} + {n1} = {resultado+n1}')
                 resultado = resultado + n1
                 print('resultado = {}'.format(resultado))
     if n == '-':
         n = float(input('digite o primeiro numero: '))
         n0 = float(input('digite o numero para subtraido: '))
         resultado = n - n0
+        if exp:
+            print(f'{n} - {n0} = {resultado}')
         print('resultado = {}'.format(resultado))
         while True:
             n1 = (input('digite o numero para subtrair ou sair: '))
             if n1 == 'sair':
+                if exp:
+                    print('até a próxima')
+                else:
+                    pass
                 break
             else:
                 n1 = float(n1)
+                if exp:
+                    print(f'{resultado} - {n1} = {resultado - n1}')
                 resultado = resultado - n1
                 print('resultado = {}'.format(resultado))
     if n == 'x':
         n = float(input('digite o primeiro numero: '))
         n0 = float(input('digite o numero a ser multiplicado: '))
         resultado = n * n0
+        if exp:
+            print(f'{n} X {n0} = {resultado}')
         print('resultado = {}'.format(resultado))
         while True:
             n1 = (input('digite o numero a ser multiplicado ou sair: '))
             if n1 == 'sair':
+                if exp:
+                    print('até logo')
+                else:
+                    pass
                 break
             else:
                 n1 = float(n1)
+                if exp:
+                    print(f'{resultado} X {n1} = {resultado*n1}')
                 resultado = resultado * n1
                 print('resultado = {}'.format(resultado))
     if n == '%':
         n = float(input('digite o primeiro numero: '))
         n0 = float(input('digite o numero a dividir: '))
         resultado = n / n0
+        if exp:
+            print(f'{n} / {n0} = {resultado}')
         print('resultado = {}'.format(resultado))
         while True:
             n1 = (input('digite o numero a dividir ou sair: '))
             if n1 == 'sair':
+                if exp:
+                    print('até a próxima')
+                else:
+                    pass
                 break
             else:
                 n1 = float(n1)
+                if exp:
+                    print(f'{resultado} / {n1} = {resultado/n1}')
                 resultado = resultado / n1
                 print('resultado = {}'.format(resultado))
 
-def converbinaria():
+def converbinaria(exp):
     import bonitesas as bn
     from time import sleep
     bn.titulo('conversor binário')
@@ -124,19 +176,31 @@ def converbinaria():
     numeros = numero.split('.')
     nint = numeros[0]
     ndec = numeros[1]
-    print(f'parte inteira: {nint}')
-    sleep(1)
+    if exp:
+        print(f'parte inteira: {nint}')
+        sleep(1)
+    else:
+        pass
     strgndec = f'0.{ndec}'
     ndec = float(strgndec)
     nint = float(nint)
-    print(f'a parte decimal: {ndec}')
-    sleep(2)
-    print('descobrindo a quantidade de bits')
+    if exp:
+        print(f'a parte decimal: {ndec}')
+        sleep(2)
+        print('descobrindo a quantidade de bits')
+    else:
+        pass
     cont = 0
     while True:
-        sleep(1)
+        if exp:
+            sleep(1)
+        else:
+            pass
         cont += 1
-        print(f'{cont} na base 2 fica {2 ** cont}')
+        if exp:
+            print(f'{cont} na base 2 fica {2 ** cont}')
+        else:
+            pass
         if 2 ** cont > nint:
             break
     print(f'o {2 ** cont} é maior do que {nint}, então vamos usar {2 ** (cont - 1)} e o numero vai ter {cont} bits')
@@ -299,7 +363,7 @@ def matriz():
 def regra3():
     import bonitesas as bn
     from time import sleep
-    from teste_poo import *
+    import teste_poo
     bn.titulo('regra de 3')
     print('escolha se a regra de 3 é simples ou composta')
     escolha = input('escolha [simples] ou [composta]').upper()
@@ -326,7 +390,7 @@ def regra3():
         print('vamos colocar o valor a ser estudado, isso é o valor que tem a variavel desconhecida')
         nome = input('qual o nome do valor a ser estudado? ')
         n = float(input('insira o valor da variavel a'))
-        valor1 = Valor(nome, n)
+        valor1 = teste_poo.Valor(nome, n)
         print('agora vamos inserir os outros valores e definir')
         varl = []
         for c in range(qtd - 1):
@@ -334,7 +398,7 @@ def regra3():
             relacao = input(f'o valor{c + 2} é direta[d] ou inversamente[i] proporcional')
             vala = float(input(f'insira o a do valor {c + 2}'))
             valb = float(input(f'insira o b do valor{c + 2}'))
-            val = Valor(nome, vala, valb)
+            val = teste_poo.Valor(nome, vala, valb)
             if relacao == 'i':
                 val.inverso()
             varl.append(val)
