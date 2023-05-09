@@ -264,20 +264,22 @@ def converbinaria(exp):
         resposta += f'{v}'
     print(resposta)
 
-def matriz():
+def matriz(exp):
     import bonitesas as bn
     from time import sleep
     bn.titulo('matrizes')
     linhas = int(input('digite quantas linhas vai ter a sua matriz: '))
     colunas = int(input('digite quantas colunas vai ter a sua matriz: '))
-    sleep(2)
-    print('a sua matriz vai ficar assim: ')
+    if exp:
+        sleep(2)
+        print('a sua matriz vai ficar assim: ')
     for l in range(linhas):
         for c in range(colunas):
             print(f'[{l};{c}]', end='')
         print()
-    sleep(2)
-    print('agora vamos inserir os numeros da sua matriz')
+    if exp:
+        sleep(2)
+        print('agora vamos inserir os numeros da sua matriz')
     matriz = []
     n = []
     for l in range(linhas):
@@ -294,49 +296,61 @@ def matriz():
     sleep(2)
     if linhas == colunas:
         if linhas <= 4:
-            print('a sua matriz é uma matriz quadrada e logo é possivel calcular o determinante')
+            if exp:
+                print('a sua matriz é uma matriz quadrada e logo é possivel calcular o determinante')
             if linhas == 1:
-                print('a sua matriz é 1x1 e logo so tem um termo que é a determinante')
-                print(f'a determinante da sua matriz é: {matriz[0][0]}')
+                if exp:
+                    print('a sua matriz é 1x1 e logo so tem um termo que é a determinante')
+                    print(f'a determinante da sua matriz é: {matriz[0][0]}')
+                else:
+                    print(f'determinante = {matriz[0][0]}')
             elif linhas == 2:
-                print(
-                    'a sua matriz é 2x2, nesse tipo de matriz a determinante se da pela subtração, dos produtos das diagonais da matriz')
-                print(
-                    f'a diagonal principal da sua matriz é {matriz[0][0]} e {matriz[1][1]}, e a diagonal secundária é {matriz[0][1]} e {matriz[1][0]}')
-                sleep(2)
+                if exp:
+                    print('a sua matriz é 2x2, nesse tipo de matriz a determinante se da pela subtração, dos produtos das diagonais da matriz')
+                    print(f'a diagonal principal da sua matriz é {matriz[0][0]} e {matriz[1][1]}, e a diagonal secundária é {matriz[0][1]} e {matriz[1][0]}')
+                    sleep(2)
+                else:
+                    pass
                 multprin = matriz[0][0] * matriz[1][1]
                 multsec = matriz[0][1] * matriz[1][0]
-                print(f'a soma das matrizes ficou {multprin} e {multsec}, a determinante fica {multprin - multsec}. ')
-                det = multprin - multsec
+                if exp:
+                    print(f'a soma das matrizes ficou {multprin} e {multsec}, a determinante fica {multprin - multsec}. ')
+                else:
+                    print(multprin-multsec)
             elif linhas == 3:
-                print('''sua matriz é 3x3, para tirar a sua determinante, clonamos as 2 colunas e colocamos a esquerda.
-    então nos pegamos 3 diagonais da direta pra esquerda e multiplamos os valores das diagonais, e somamos as diagonais diferentes.
-    depois fazemos isso com 3 diagonais da esquerda para direita, pegamos os valores finais de cada grupo de diagonais e subtraimos para conseguir
-    o determinante''')
-                sleep(5)
-                print('segue o exemplo das diagonais principais: ')
-                print(f'[ ][ ][\33[0;33mX\33[m]\33[1;30;40m{124:c}\33[m[\33[0;32mX\33[m][\33[0;31mX\33[m]')
-                print(f'[ ][\33[0;33mX\33[m][\33[0;32mX\33[m]\33[1;30;40m{124:c}\33[m[\33[0;31mX\33[m][ ]')
-                print(f'[\33[0;33mX\33[m][\33[0;32mX\33[m][\33[0;31mX\33[m]\33[1;30;40m{124:c}\33[m[ ][ ]')
-                print('segue o exemplo das diagonais secundarias: ')
-                sleep(3)
-                print(f'[\33[0;31mX\33[m][\33[0;32mX\33[m][\33[0;33mX\33[m]\33[1;30;40m{124:c}\33[m[ ][ ]')
-                print(f'[ ][\33[0;31mX\33[m][\33[0;32mX\33[m]\33[1;30;40m{124:c}\33[m[\33[0;33mX\33[m][ ]')
-                print(f'[ ][ ][\33[0;31mX\33[m]\33[1;30;40m{124:c}\33[m[\33[0;32mX\33[m][\33[0;33mX\33[m]')
-                print('os numeros após as barras pretas são as 2 primeiras colunas  clonadas')
-                sleep(3)
-                print(f'aplicando na sua matriz, os numeros diagonais principais ficam: ')
+                if exp:
+                    print('''sua matriz é 3x3, para tirar a sua determinante, clonamos as 2 colunas e colocamos a esquerda.
+        então nos pegamos 3 diagonais da direta pra esquerda e multiplamos os valores das diagonais, e somamos as diagonais diferentes.
+        depois fazemos isso com 3 diagonais da esquerda para direita, pegamos os valores finais de cada grupo de diagonais e subtraimos para conseguir
+        o determinante''')
+                    sleep(5)
+                    print('segue o exemplo das diagonais principais: ')
+                    print(f'[ ][ ][\33[0;33mX\33[m]\33[1;30;40m{124:c}\33[m[\33[0;32mX\33[m][\33[0;31mX\33[m]')
+                    print(f'[ ][\33[0;33mX\33[m][\33[0;32mX\33[m]\33[1;30;40m{124:c}\33[m[\33[0;31mX\33[m][ ]')
+                    print(f'[\33[0;33mX\33[m][\33[0;32mX\33[m][\33[0;31mX\33[m]\33[1;30;40m{124:c}\33[m[ ][ ]')
+                    print('segue o exemplo das diagonais secundarias: ')
+                    sleep(3)
+                    print(f'[\33[0;31mX\33[m][\33[0;32mX\33[m][\33[0;33mX\33[m]\33[1;30;40m{124:c}\33[m[ ][ ]')
+                    print(f'[ ][\33[0;31mX\33[m][\33[0;32mX\33[m]\33[1;30;40m{124:c}\33[m[\33[0;33mX\33[m][ ]')
+                    print(f'[ ][ ][\33[0;31mX\33[m]\33[1;30;40m{124:c}\33[m[\33[0;32mX\33[m][\33[0;33mX\33[m]')
+                    print('os numeros após as barras pretas são as 2 primeiras colunas  clonadas')
+                    sleep(3)
+                    print(f'aplicando na sua matriz, os numeros diagonais principais ficam: ')
+                else:
+                    pass
                 diagprin = [[matriz[0][1], matriz[1][0], matriz[2][2]], [matriz[0][0], matriz[1][2], matriz[2][1]],
                             [matriz[0][2], matriz[1][1], matriz[2][0]]]
                 diagsec = [[matriz[0][0], matriz[1][1], matriz[2][2]], [matriz[0][1], matriz[1][2], matriz[2][0]],
                            [matriz[0][2], matriz[1][0], matriz[2][1]]]
-                print(diagprin)
-                sleep(3)
-                print('e os numeros das diagonais secundarias ficam: ')
-                print(diagsec)
-                sleep(3)
-                print(
-                    'agora vamos fazer a multiplicação das diagonais principais e somar elas para ver o resultado das diagonais principais1; ')
+                if exp:
+                    print(diagprin)
+                    sleep(3)
+                    print('e os numeros das diagonais secundarias ficam: ')
+                    print(diagsec)
+                    sleep(3)
+                    print('agora vamos fazer a multiplicação das diagonais principais e somar elas para ver o resultado das diagonais principais1; ')
+                else:
+                    pass
                 resulprin = []
                 resulsec = []
                 multi = 1
@@ -345,52 +359,63 @@ def matriz():
                         multi *= diagprin[c][v]
                     resulprin.append(multi)
                     multi = 1
-                sleep(3)
-                print(f'a multiplicação das diagonais principais: {resulprin}')
-                sleep(2)
+                if exp:
+                    sleep(3)
+                    print(f'a multiplicação das diagonais principais: {resulprin}')
+                    sleep(2)
+                else:
+                    pass
                 for c in range(3):
                     for v in range(3):
                         multi *= diagsec[c][v]
                     resulsec.append(multi)
                     multi = 1
-                print(f'a multiplicação das diagonais secundárias foi: {resulsec}')
-                sleep(1)
-                print(
-                    f'no fim vai ficar {sum(resulprin)} - {sum(resulsec)} que vai dar a determinante = {sum(resulprin) - sum(resulsec)}')
+                if exp:
+                    print(f'a multiplicação das diagonais secundárias foi: {resulsec}')
+                    sleep(1)
+                    print(f'no fim vai ficar {sum(resulprin)} - {sum(resulsec)} que vai dar a determinante = {sum(resulprin) - sum(resulsec)}')
+                else:
+                    print(f'determinante = {sum(resulprin) - sum(resulsec)}')
         else:
             print('mesmo que a sua matriz seja quadrada, não é possível tirar uma determinante')
 
-def regra3():
+def regra3(exp):
     import bonitesas as bn
     from time import sleep
-    import teste_poo
+    import modelos
     bn.titulo('regra de 3')
     print('escolha se a regra de 3 é simples ou composta')
     escolha = input('escolha [simples] ou [composta]').upper()
     sleep(2)
     if escolha == 'COMPOSTA':
-        print('''para regras de 3 composta nos precisamos definir quais grandezas são diretas e quais são inversamente proporcionais:
-    as grandezas diretamente proporcionais aumentam em conjunto, exemplo:
-    200 ----- 100%
-    100 ----- 50%''')
-        sleep(2)
-        print('''já as grandezas inversamente proporcionais aumentam quando a outra diminui exemplo:
-    em um mesmo trecho de 100km 2 carros passam em diferentes velocidades e tempo:
-    100km/h ----- 1h
-    50km/h ----- 2h''')
-        sleep(2)
-        print('''definido isso vamos agora mostrar como funciona uma regra de 3 composta
-        valor1     valor2 valor3
-          a          a      a  == a1/desconhecido = a2*a3/b2*b3
-    (desconhecido)   b      b
-    as letras são as variaveis e o desconhecido é o numero a ser descoberto, para calcular esse valor devemos entrar no contexto e definir 
-    o que é direto e o que é inverso \33[1mem relação ao ponto da variavel desconhecida \33[mcomo explicado anteriormente.''')
-        sleep(4)
+        if exp:
+            print('''para regras de 3 composta nos precisamos definir quais grandezas são diretas e quais são inversamente proporcionais:
+        as grandezas diretamente proporcionais aumentam em conjunto, exemplo:
+        200 ----- 100%
+        100 ----- 50%''')
+            sleep(2)
+            print('''já as grandezas inversamente proporcionais aumentam quando a outra diminui exemplo:
+        em um mesmo trecho de 100km 2 carros passam em diferentes velocidades e tempo:
+        100km/h ----- 1h
+        50km/h ----- 2h''')
+            sleep(2)
+            print('''definido isso vamos agora mostrar como funciona uma regra de 3 composta
+            valor1     valor2 valor3
+              a          a      a  == a1/desconhecido = a2*a3/b2*b3
+        (desconhecido)   b      b
+        as letras são as variaveis e o desconhecido é o numero a ser descoberto, para calcular esse valor devemos entrar no contexto e definir 
+        o que é direto e o que é inverso \33[1mem relação ao ponto da variavel desconhecida \33[mcomo explicado anteriormente.''')
+            sleep(4)
+        else:
+            pass
         qtd = int(input('primeiramente insira quantas valores vão ter a sua regra de 3? '))
-        print('vamos colocar o valor a ser estudado, isso é o valor que tem a variavel desconhecida')
+        if exp:
+            print('vamos colocar o valor a ser estudado, isso é o valor que tem a variavel desconhecida')
+        else:
+            pass
         nome = input('qual o nome do valor a ser estudado? ')
         n = float(input('insira o valor da variavel a'))
-        valor1 = teste_poo.Valor(nome, n)
+        valor1 = modelos.Valor(nome, n)
         print('agora vamos inserir os outros valores e definir')
         varl = []
         for c in range(qtd - 1):
@@ -398,77 +423,107 @@ def regra3():
             relacao = input(f'o valor{c + 2} é direta[d] ou inversamente[i] proporcional')
             vala = float(input(f'insira o a do valor {c + 2}'))
             valb = float(input(f'insira o b do valor{c + 2}'))
-            val = teste_poo.Valor(nome, vala, valb)
+            val = modelos.Valor(nome, vala, valb)
             if relacao == 'i':
                 val.inverso()
             varl.append(val)
-        print('''uma vez digitado os valores vamos executar o calculo, lembrando que vai ser do mesmo jeito mostrado anteriormente
-    porém temos que por em mente que os valores inversamente proporcionais ao valor de estudo tem o a e b invertido''')
+        if exp:
+            print('''uma vez digitado os valores vamos executar o calculo, lembrando que vai ser do mesmo jeito mostrado anteriormente
+        porém temos que por em mente que os valores inversamente proporcionais ao valor de estudo tem o a e b invertido''')
+        else:
+            pass
         multdiv = 1
         multdive = 1
-        print(f'''o calculo vai ficar:
-    {valor1.nome}\t''', end='')
-        for c in range(qtd - 1):
-            print(f'{varl[c].nome}\t', end='')
-        print()
-        print(f'{valor1.valora}\t', end='')
+        if exp:
+            print(f'''o calculo vai ficar:
+        {valor1.nome}\t''', end='')
+            for c in range(qtd - 1):
+                print(f'{varl[c].nome}\t', end='')
+            print()
+            print(f'{valor1.valora}\t', end='')
+        else:
+            pass
         multdiv *= valor1.valora
-        for c in range(qtd - 1):
-            print(f'{varl[c].valora}\t', end='')
+        if exp:
+            for c in range(qtd - 1):
+                print(f'{varl[c].valora}\t', end='')
             multdive *= varl[c].valora
-        print()
-        print(f'desconhecido\t', end='')
+        if exp:
+            print()
+            print(f'desconhecido\t', end='')
+        else:
+            pass
         for c in range(qtd - 1):
-            print(f'{varl[c].valorb}\t', end='')
+            if exp:
+                print(f'{varl[c].valorb}\t', end='')
+            else:
+                pass
             multdiv *= varl[c].valorb
-        print()
-        print(f'''com isso, a gente vai passar o a do valor de estudo para como numero que fica embaixo e fazemos o seguinte calculo
-    desconhecido = ''', end='')
-        for c in range(qtd - 1):
-            if c == qtd - 1:
-                print(f'{varl[c].valora}', end='')
-            print(f'{varl[c].valora}*', end='')
-        print('/', end='')
-        for c in range(qtd - 1):
-            if c == qtd - 1:
-                print(f'{varl[c].valorb}', end='')
-            print(f'{varl[c].valorb}*', end='')
-        print(f'resultando em deconhecido = {multdiv}/{multdive} = {multdiv / multdive}')
+        if exp:
+            print()
+            print(f'''com isso, a gente vai passar o a do valor de estudo para como numero que fica embaixo e fazemos o seguinte calculo
+        desconhecido = ''', end='')
+            for c in range(qtd - 1):
+                if c == qtd - 1:
+                    print(f'{varl[c].valora}', end='')
+                print(f'{varl[c].valora}*', end='')
+            print('/', end='')
+            for c in range(qtd - 1):
+                if c == qtd - 1:
+                    print(f'{varl[c].valorb}', end='')
+                print(f'{varl[c].valorb}*', end='')
+            print(f'resultando em deconhecido = {multdiv}/{multdive} = {multdiv / multdive}')
+        else:
+            print(f'x = {multdiv / multdive}')
     if escolha == 'SIMPLES':
-        escolha = input('escolha [simples] ou [composta]')
-        print('''primeiro vamos definir se a regra é direta ou inversamente proporciona, isso é
-        se as grandezas relaciondas aumentam em conjunto, elas são diretamente proporcionais.
-        exemplo:
-        200----100%
-        150----75%
-        quando a porcentagem aumenta o numero tambem aumenta.
-        agora se quando uma aumentar a outra diminuir elas são inversamente proporcionais
-        a exemplo de velocidade e tempo, exemplo: a um mesmo trecho de 100km 2 carros passam em velocidades diferentes com horas diferentes
-        100km/h ----- 1h
-        50km/h ----- x
-        quando a velocidade aumenta a hora diminui, agora insira se a regra de 3 é simples ou composta''')
+        if exp:
+            print('''primeiro vamos definir se a regra é direta ou inversamente proporciona, isso é
+            se as grandezas relaciondas aumentam em conjunto, elas são diretamente proporcionais.
+            exemplo:
+            200----100%
+            150----75%
+            quando a porcentagem aumenta o numero tambem aumenta.
+            agora se quando uma aumentar a outra diminuir elas são inversamente proporcionais
+            a exemplo de velocidade e tempo, exemplo: a um mesmo trecho de 100km 2 carros passam em velocidades diferentes com horas diferentes
+            100km/h ----- 1h
+            50km/h ----- x
+            quando a velocidade aumenta a hora diminui, agora insira se a regra de 3 é simples ou composta''')
+        else:
+            pass
         escolha = input('escolha [d] para direta e [i] para inversa').upper()
         if escolha == 'D':
-            print('''para a regra de 3 diretamente proporcional nos fazemos o calculo da seguinte maneira:
-            a     b
-              \33[0;33m\ \33[m\33[0;32m/\33[m
-              \33[0;32m/ \33[m\33[0;33m\ \33[m 
-            c     d(valor a encontrar)''')
-            sleep(5)
-            print('agora vamos inserir seus valores com base na ultima representação apresentada')
+            if exp:
+                print('''para a regra de 3 diretamente proporcional nos fazemos o calculo da seguinte maneira:
+                a     b
+                  \33[0;33m\ \33[m\33[0;32m/\33[m
+                  \33[0;32m/ \33[m\33[0;33m\ \33[m 
+                c     d(valor a encontrar)''')
+                sleep(5)
+                print('agora vamos inserir seus valores com base na ultima representação apresentada')
+            else:
+                pass
             a = float(input('digite o numero que vai em a'))
             b = float(input('digite o numero que vai em b'))
             c = float(input('digite o numero que vai em c'))
-            print(f'agora vamos calcular o valor desconhecido, o calculo será: {a}X = ({b})({c})')
-            print(f'o valor desconhecido é {(b + c) / a}')
+            if exp:
+                print(f'agora vamos calcular o valor desconhecido, o calculo será: {a}X = ({b})({c})')
+                print(f'o valor desconhecido é {(b * c) / a}')
+            else:
+                print(f'X = {(b * c) / a}')
         elif escolha == 'I':
-            print('''para regra de 3 inversamente proporcionais nos fazemos o calculo da seguinte maneira:
-            a\33[0;33m-----\33[mb
-            c\33[0;33m-----\33[md(valor a ser descoberto)''')
+            if exp:
+                print('''para regra de 3 inversamente proporcionais nos fazemos o calculo da seguinte maneira:
+                a\33[0;33m-----\33[mb
+                c\33[0;33m-----\33[md(valor a ser descoberto)''')
+            else:
+                pass
             a = float(input('digite o numero que vai em a'))
             b = float(input('digite o numero que vai em b'))
             c = float(input('digite o numero que vai em c'))
-            sleep(3)
-            print(f'então o calculo fica a*b = c*d ou seja {a}*{b} = {c}*d')
-            print(f'o valor desconhecido é {(a * b) / c}')
+            if exp:
+                sleep(3)
+                print(f'então o calculo fica a*b = c*d ou seja {a}*{b} = {c}*d')
+                print(f'o valor desconhecido é {(a * b) / c}')
+            else:
+                print(f'X = {(a * b) / c}')
 

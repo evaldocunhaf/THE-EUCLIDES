@@ -1,6 +1,6 @@
 import bonitesas as bn
 from time import sleep
-from teste_poo import *
+from modelos import *
 bn.titulo('regra de 3')
 print('escolha se a regra de 3 é simples ou composta')
 escolha = input('escolha [simples] ou [composta]').upper()

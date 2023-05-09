@@ -1,8 +1,8 @@
 import bonitesas as bn
 import operações_nfunção as on
-import teste_poo
+import modelos
 bn.titulo('THE EUCLIDES')
-exp = teste_poo.Explicação()
+exp = modelos.Explicação()
 while True:
  bn.titulo2('MENU')
  print(f'''escolha qual funcionalidade da calculadora voce deseja acessar?
@@ -25,5 +25,5 @@ while True:
   on.regra3(exp.escolha)
  elif escolha == 6:
   on.operações(exp.escolha)
-  
+
  
